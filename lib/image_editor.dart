@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:crypto/crypto.dart';
 import 'dart:ui' as ui;
 
 import 'extension/num_extension.dart';
@@ -120,9 +121,10 @@ class ImageEditorState extends State<ImageEditor>
       var pngBytes = byteData?.buffer.asUint8List();
 
       final paths = widget.savePath ?? await getTemporaryDirectory();
-      final file =
-          await File('${paths.path}/' + DateTime.now().toString() + '.jpg')
-              .create();
+      final file = await File('${paths.path}/' +
+              md5.convert(utf8.encode(DateTime.now().toString())).toString() +
+              '.jpg')
+          .create();
       file.writeAsBytes(pngBytes ?? []);
       decodeImg().then((value) {
         if (value == null) {
