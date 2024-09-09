@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftImageEditorPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "image_editor", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "nga_image_editor", binaryMessenger: registrar.messenger())
     let instance = SwiftImageEditorPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

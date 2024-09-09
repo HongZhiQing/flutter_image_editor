@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
 
   path_provider: ^2.0.1
-  image: ^3.0.0
+  image: 4.0.17
 
 dev_dependencies:
   flutter_test:
@@ -33,7 +33,7 @@ flutter:
         package: com.lijiaqi.image_editor
         pluginClass: ImageEditorPlugin
       ios:
-        pluginClass: ImageEditorPlugin
+        pluginClass: NgaImageEditorPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
