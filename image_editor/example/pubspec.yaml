@@ -19,6 +19,8 @@ dependencies:
   oktoast: ^3.1.5
   path_provider: ^2.0.15
   image_size_getter: ^2.1.2
+  wechat_assets_picker: ^9.3.2
+  get: ^4.6.6
 dependency_overrides: 
   image_editor_platform_interface:
     path: ../../image_editor_platform_interface

@@ -5,6 +5,9 @@ import 'package:flutter_image_editor_example/draw_example_page.dart';
 import 'package:flutter_image_editor_example/home_page.dart';
 import 'package:flutter_image_editor_example/merge_image_page.dart';
 import 'package:flutter_image_editor_example/mix_image_page.dart';
+import 'package:wechat_assets_picker/wechat_assets_picker.dart';
+
+import '../edit_image_page.dart';
 
 class Examples extends StatefulWidget {
   @override
@@ -23,9 +26,37 @@ class _ExamplesState extends State<Examples> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: widgets.map((e) => _buildButton(e)).toList(),
-    );
+    return Column(children: [
+      ...widgets.map((e) => _buildButton(e)).toList(),
+      Align(
+        alignment: Alignment.center,
+        child: Container(
+          margin: const EdgeInsets.only(top: 16),
+          width: 300,
+          height: 48,
+          child: ElevatedButton(
+            onPressed: () async {
+              final List<AssetEntity>? result = await AssetPicker.pickAssets(
+                context,
+                pickerConfig: const AssetPickerConfig(maxAssets: 1),
+              );
+              if (result == null) {
+                return;
+              }
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext ctx) => EditImagePage(
+                    assets: result.first,
+                  ),
+                ),
+              );
+            },
+            child: Text("edit"),
+          ),
+        ),
+      ),
+    ]);
   }
 
   Widget _buildButton(Widget widget) {

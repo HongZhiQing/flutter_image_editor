@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fluttercandies.flutter_image_editor_example">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!--请求图片和视频权限-->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="flutter_image_editor_example">
